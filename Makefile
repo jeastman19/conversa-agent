@@ -1,7 +1,8 @@
 .PHONY: run dev install format lint test
 
 run:
-	uvicorn main:app --reload
+	@clear
+	PYTHONPATH=. uvicorn app.main:app --reload
 
 dev:
 	pip install -r requirements.txt

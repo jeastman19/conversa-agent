@@ -5,6 +5,17 @@
 
 # Registro de cambios - conversa-agent
 
+## [0.1.2] - 2025-08-01
+
+### Eliminado
+
+- Archivo main.py obsoleto en la raíz del proyecto.
+
+### Cambiado
+
+- Se actualizó el Makefile para que utilice app.main:app como punto de entrada de la aplicación con uvicorn.
+
+
 ## [0.1.1] - 2025-08-01
 
 ### Añadido
