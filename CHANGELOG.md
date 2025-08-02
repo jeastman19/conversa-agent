@@ -1,26 +1,21 @@
-
----
-
-### 📄 `CHANGELOG.md`
-
 # Registro de cambios - conversa-agent
 
 ## [0.1.2] - 2025-08-01
 
-### Cambios internos
-
-- Eliminada del Makefile la verificación redundante del CHANGELOG.md, ya que ahora está cubierta por el hook de pre-commit.
-
-## [0.1.2] - 2025-08-01
-
-### Eliminado
-
-- Archivo main.py obsoleto en la raíz del proyecto.
+### Añadido
+- Se añadió `TELEGRAM_TOKEN` al archivo `.env.example` como alias en mayúsculas de `telegram_bot_token`.
 
 ### Cambiado
+- Se actualizó el Makefile para que utilice `app.main:app` como punto de entrada de la aplicación con `uvicorn`.
 
-- Se actualizó el Makefile para que utilice app.main:app como punto de entrada de la aplicación con uvicorn.
+### Eliminado
+- Archivo `main.py` obsoleto en la raíz del proyecto.
+- Verificación redundante del `CHANGELOG.md` en el `Makefile`, ya cubierta por el hook de pre-commit.
+- Archivo `adapters/inbound/telegram_bot.py` tras migrar completamente a `app/adapters/inbound/telegram.py`.
 
+### Cambios internos
+- Se reemplazó el uso de `dummy_rag_search` por `dummy_rag_response`, moviendo la función a `app/chat/services/rag.py` para un diseño más coherente.
+- Se actualizó `message_handler.py` para utilizar la nueva ubicación de la función stub de RAG.
 
 ## [0.1.1] - 2025-08-01
 
@@ -32,6 +27,10 @@
 ### Cambios internos
 - Estructura de carpetas con arquitectura hexagonal.
 - Preparación para integración con Telegram y RAG.
+- Se eliminó el archivo `adapters/inbound/telegram_bot.py` tras migrar completamente a `app/adapters/inbound/telegram.py`.
+- Se reemplazó el uso de `dummy_rag_search` por `dummy_rag_response`, moviendo la función a `app/chat/services/rag.py` para un diseño más coherente.
+- Se actualizó `message_handler.py` para utilizar la nueva ubicación de la función stub de RAG.
+- Se añadió `TELEGRAM_TOKEN` al archivo `.env.example` como alias en mayúsculas de `telegram_bot_token`.
 
 ## [0.1.0] - 2025-08-01
 
