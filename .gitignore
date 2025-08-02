@@ -1,0 +1,53 @@
+# Entorno virtual
+venv/
+
+# Variables de entorno (excepto el archivo de ejemplo)
+.env
+.env.local
+.env.dev
+
+# Archivos de configuración locales
+*.local
+*.envrc
+
+# Compilación de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Archivos de pruebas
+.coverage
+.cache/
+pytest_cache/
+htmlcov/
+
+# Configuración del editor
+.vscode/
+.idea/
+
+# Logs y salidas
+*.log
+*.out
+*.bak
+
+# Archivos temporales
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Archivos de sistema
+*.egg-info/
+dist/
+build/
+
+# Archivos de ejecución de Docker u otros entornos
+*.pid
+
+# Archivos de pruebas locales
+test.db
+
+# Archivo de estado del proyecto (solo para uso interno)
+docs/estado_proyecto.json
