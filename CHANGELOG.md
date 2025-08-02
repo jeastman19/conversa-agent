@@ -7,6 +7,12 @@
 
 ## [0.1.2] - 2025-08-01
 
+### Cambios internos
+
+- Eliminada del Makefile la verificación redundante del CHANGELOG.md, ya que ahora está cubierta por el hook de pre-commit.
+
+## [0.1.2] - 2025-08-01
+
 ### Eliminado
 
 - Archivo main.py obsoleto en la raíz del proyecto.

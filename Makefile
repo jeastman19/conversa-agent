@@ -1,33 +1,32 @@
-.PHONY: run dev install format lint test
+# Makefile para conversa-agent
+
+PYTHONPATH=./
+APP_MODULE=app.main:app
 
 run:
-	@clear
-	PYTHONPATH=. uvicorn app.main:app --reload
-
-dev:
-	pip install -r requirements.txt
-
-install:
-	python -m venv venv && source venv/bin/activate && make dev
-
-format:
-	black .
-
-lint:
-	ruff .
+	clear
+	@echo "🚀 Ejecutando conversa-agent con Uvicorn..."
+	@PYTHONPATH=$(PYTHONPATH) uvicorn $(APP_MODULE) --reload
 
 test:
 	clear
-	PYTHONPATH=./ pytest -v --tb=short
+	@echo "🧪 Ejecutando pruebas..."
+	@PYTHONPATH=$(PYTHONPATH) pytest -v --maxfail=1 --disable-warnings
 
-check-changelog:
-	@echo "🔍 Verificando si CHANGELOG.md fue modificado..."
-	@changed_files=$$(git diff --cached --name-only); \
-	if echo "$$changed_files" | grep -E '\.py$$|Makefile|^app/|^tests/' > /dev/null; then \
-		if ! echo "$$changed_files" | grep -q "CHANGELOG.md"; then \
-			echo "❌ ERROR: Se detectaron cambios en el código, pero no se modificó CHANGELOG.md"; \
-			echo "👉 Por favor, actualiza CHANGELOG.md antes de hacer commit."; \
-			exit 1; \
-		fi \
-	fi; \
-	echo "✅ Verificación de CHANGELOG.md completada con éxito."
+lint:
+	@echo "🔍 Ejecutando linter..."
+	@ruff check .
+
+format:
+	@echo "🎨 Formateando código..."
+	@ruff format .
+
+install-dev:
+	@echo "📦 Instalando dependencias de desarrollo..."
+	@pip install -r requirements.txt
+
+clean:
+	@echo "🧹 Limpiando archivos temporales..."
+	@find . -type d -name "__pycache__" -exec rm -r {} +
+	@rm -rf .pytest_cache .mypy_cache
+
